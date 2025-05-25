@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Administrator Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      color: #f5f5f5;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: rgba(30, 30, 40, 0.95);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 0.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-container ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-container a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .nav-container a:hover {
+      color: #ffd700;
+    }
+
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem 2rem 1rem;
+      background: linear-gradient(120deg, #232526 60%, #ffd700 100%);
+      border-radius: 0 0 2rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-image {
+      width: 160px;
+      height: 160px;
+      margin-bottom: 1.2rem;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      border: 5px solid #ffd700;
+    }
+    .circular-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ffd700;
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      color: #f5f5f5;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    .about-section h2,
+    .skills-section h2,
+    .cert-section h2,
+    .contact-section h2 {
+      color: #ffd700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+    .about-section p {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      background: rgba(40,40,50,0.7);
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: rgba(40,40,50,0.85);
+      border-radius: 1rem;
+      padding: 1.2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 6px 24px rgba(255,215,0,0.12);
+    }
+    .skill-card i {
+      font-size: 2.2rem;
+      color: #ffd700;
+      margin-bottom: 0.6rem;
+    }
+    .skill-card h3 {
+      font-size: 1.1rem;
+      color: #f5f5f5;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .cert-section .cert-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .cert-image {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      border: 3px solid #ffd700;
+      background: #fff;
+    }
+    .cert-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .cert-link i {
+      color: #ffd700;
+      margin-right: 0.5rem;
+    }
+    .cert-link a {
+      color: #f5f5f5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cert-link a:hover {
+      color: #ffd700;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+      background: rgba(40,40,50,0.7);
+      padding: 1.2rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      max-width: 400px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.1rem;
+    }
+    .contact-item i {
+      color: #ffd700;
+      font-size: 1.3rem;
+    }
+    .contact-item a, .contact-item p {
+      color: #f5f5f5;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .hero-section {
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+      }
+      .profile-image {
+        width: 110px;
+        height: 110px;
+      }
+      main {
+        padding: 1rem 0.2rem;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-container {
+        max-width: 100%;
+        padding: 1rem 0.5rem;
+      }
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="https://i.ibb.co/rG38BCr6/1000000030.png" alt="Profile Picture" class="circular-image">
+                </div>
+                <h1>Travis Eugene Brown</h1>
+                <p class="tagline">System Administrator</p>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About Me</h2>
+            <p>Dedicated System Administrator with over 13 years of experience in managing and optimizing complex IT infrastructure. Passionate about system security, performance optimization, and staying current with emerging technologies. In my free time, I explore AI technologies and continuously expand my technical expertise.</p>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <h2>Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>System Monitoring</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>System Logs Analysis</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-bug"></i>
+                    <h3>System Debugging</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h3>VM & Server Management</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>System Security</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-linux"></i>
+                    <h3>Linux Administration</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Experience</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-terminal"></i>
+                    <h3>Terminal Proficiency</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="cert-section">
+            <h2>Certifications</h2>
+            <div class="cert-container">
+                <img src="https://i.ibb.co/0xDkZGG/sysadmin-CERTIFICATE.png" alt="System Administration Certificate" class="cert-image">
+            </div>
+            <p class="cert-link">
+                <i class="fas fa-link"></i>
+                <a href="https://tinyurl.com/5yndvfra" target="_blank">Safe Link to Certification</a>
+            </p>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Information</h2>
+            <div class="contact-container">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:tebtts.lts@gmail.com">tebtts.lts@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>257 E Main St, Apt 3<br>Wabash, Indiana 46992</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+</body>
+</html>
